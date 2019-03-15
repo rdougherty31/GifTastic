@@ -1,5 +1,6 @@
-var  artists= ["chance the rapper","alicia keys","rihanna","adele","khalid","justin timberlake"];
+var  artists= ["frank sinatra","alicia keys","chance the rapper","avicii","sia","justin timberlake"];
 $(document).ready(function() {
+    alert("Click the buttons to see GIFs. Then click the GIFs to play & pause!");
     function headerBG() {
         $(".header").css("background-image","linear-gradient(#fff,#00021dc7)");
     }
@@ -13,6 +14,9 @@ $(document).ready(function() {
             btnDiv.text(artists[i]);
             $("#btnsContainer").append(btnDiv);
             console.log(artists);
+        }
+        if (artists.length > 9) {
+            $("#gifContainer").css("margin-top","26rem");
         }
     }
 
@@ -28,6 +32,7 @@ $(document).ready(function() {
             url: queryURL,
             method: "GET"
             }).then(function(response) {
+                console.log(response);
                 for (var i=0; i<response.data.length; i++) {
                     var gifRating = response.data[i].rating;
                     if (gifRating !== "r" && gifRating !== "pg-13") {
@@ -68,6 +73,7 @@ $(document).ready(function() {
             console.log(artist);
             getGifs();
         }
+        $("#artistInput").val("");
     });
     function gifToggle() {
         var still = $(this).attr("data-still");
