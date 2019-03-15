@@ -1,7 +1,7 @@
 var  artists= ["chance the rapper","alicia keys","rihanna","adele","khalid","justin timberlake"];
 $(document).ready(function() {
     function headerBG() {
-        $(".header").css("background-image","linear-gradient(#fff,#00021dd6)");
+        $(".header").css("background-image","linear-gradient(#fff,#00021dc7)");
     }
     function renderButtons() {
         $("#btnsContainer").empty();
@@ -35,13 +35,26 @@ $(document).ready(function() {
                         var gifP = $("<p>");
                         gifP.text("Rating: "+gifRating);
                         var gifImgDiv = $("<img>");
-                        var gifImage = response.data[i].images.fixed_height.url;
+                        var gifImage = response.data[i].images.fixed_height_still.url;
+                        var gifMove = response.data[i].images.fixed_height.url;
+                        gifImgDiv.addClass("gifImages");
                         gifImgDiv.attr("src",gifImage);
-                        gifDiv.append(gifP);
+                        gifImgDiv.attr("data-still",gifImage);
+                        gifImgDiv.attr("data-move",gifMove);
+                        gifImgDiv.attr("data-state","still");
+                        console.log(gifImage);
+                        console.log(gifImgDiv.attr("src"));
+                        console.log(gifImgDiv.attr("data-still"));
+                        console.log(gifImgDiv.attr("data-move"));
+                        console.log(gifImgDiv.attr("data-state"));
+                    }
+                    if (i < 10) {
                         gifDiv.append(gifImgDiv);
+                        gifDiv.append(gifP);
                         $("#gifContainer").prepend(gifDiv);
                     }
                 }
+                $(".gifImages").click(gifToggle);
             });
             headerBG();
         });
@@ -56,4 +69,20 @@ $(document).ready(function() {
             getGifs();
         }
     });
+    function gifToggle() {
+        var still = $(this).attr("data-still");
+        var move = $(this).attr("data-move");
+        var state = $(this).attr("data-state");
+        if (state === "still") {
+            $(this).attr("src",move);
+            $(this).attr("data-state","move");
+        } else if (state === "move") {
+            $(this).attr("src",still);
+            $(this).attr("data-state","still");
+        }
+        console.log($(this).attr("src"));
+        console.log($(this).attr("data-still"));
+        console.log($(this).attr("data-move"));
+        console.log($(this).attr("data-state"));
+    }
 });
