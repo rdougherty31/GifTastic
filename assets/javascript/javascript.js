@@ -20,7 +20,7 @@ $(document).ready(function() {
         $(".artist").click(function() {
             var artToGet = $(this).attr("data-name");
             console.log(artToGet);
-            var queryURL = "http://api.giphy.com/v1/gifs/search?q="+artToGet+"&api_key=BfMWv9whatITDicyhgJzqwmg50jHEHD6"; //get queryURL http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=YOUR_API_KEY
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q="+artToGet+"&api_key=BfMWv9whatITDicyhgJzqwmg50jHEHD6"; //get queryURL http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=YOUR_API_KEY
             $.ajax({
             url: queryURL,
             method: "GET"
