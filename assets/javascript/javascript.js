@@ -1,5 +1,8 @@
 var  artists= ["chance the rapper","alicia keys","rihanna","adele","khalid","justin timberlake"];
 $(document).ready(function() {
+    function headerBG() {
+        $(".header").css("background-image","linear-gradient(#fff,#00021dd6)");
+    }
     function renderButtons() {
         $("#btnsContainer").empty();
 
@@ -40,6 +43,7 @@ $(document).ready(function() {
                     }
                 }
             });
+            headerBG();
         });
     }
     $("#addArtist").click(function(event) {

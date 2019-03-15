@@ -7,7 +7,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 5;
-    background-image: linear-gradient(#fff,#00021dd6);
+    background:#00021dd6;
     padding: 1rem;
 }
 form {
