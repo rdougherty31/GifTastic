@@ -7,7 +7,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 5;
-    background:#00021dd6;
+	background:#00021dd6;
     padding: 1rem 0;
 }
 form {
@@ -19,6 +19,12 @@ label {
     font-size: 2.5rem;
     letter-spacing: .2rem;
     text-shadow: 0 0 0.1rem black;
+}
+#artistContainer {
+	background-image: url(../images/musicStaff.png);
+	background-position: center;
+	padding: 2rem;
+    margin: 0;
 }
 #btnsContainer, #gifContainer, form {
     text-align: center;

@@ -1,8 +1,8 @@
-var  artists= ["frank sinatra","alicia keys","chance the rapper","avicii","sia","justin timberlake"];
+var  artists= ["avicii","alicia keys","chance the rapper","eric church","sia","justin timberlake"];
 $(document).ready(function() {
     alert("Click the buttons to see GIFs. Then click the GIFs to play & pause!");
     function headerBG() {
-        $(".header").css("background-image","linear-gradient(#fff,#00021dc7)");
+        $(".header").css("background","linear-gradient(#fff,#00021dc7)");
     }
     function renderButtons() {
         $("#btnsContainer").empty();
@@ -25,9 +25,12 @@ $(document).ready(function() {
 
     function getGifs() {
         $(".artist").click(function() {
+            $(this).css("background","#be4035");
+            $(this).css("box-shadow","none");
+            $(this).css("-webkit-box-shadow","none");
             var artToGet = $(this).attr("data-name");
             console.log(artToGet);
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q="+artToGet+"&api_key=BfMWv9whatITDicyhgJzqwmg50jHEHD6"; //get queryURL http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=YOUR_API_KEY
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q="+artToGet+"&api_key=BfMWv9whatITDicyhgJzqwmg50jHEHD6&limit=10"; //get queryURL http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=YOUR_API_KEY&limit=10
             $.ajax({
             url: queryURL,
             method: "GET"
@@ -47,16 +50,14 @@ $(document).ready(function() {
                         gifImgDiv.attr("data-still",gifImage);
                         gifImgDiv.attr("data-move",gifMove);
                         gifImgDiv.attr("data-state","still");
+                        gifDiv.append(gifImgDiv);
+                        gifDiv.append(gifP);
+                        $("#gifContainer").prepend(gifDiv);
                         console.log(gifImage);
                         console.log(gifImgDiv.attr("src"));
                         console.log(gifImgDiv.attr("data-still"));
                         console.log(gifImgDiv.attr("data-move"));
                         console.log(gifImgDiv.attr("data-state"));
-                    }
-                    if (i < 10) {
-                        gifDiv.append(gifImgDiv);
-                        gifDiv.append(gifP);
-                        $("#gifContainer").prepend(gifDiv);
                     }
                 }
                 $(".gifImages").click(gifToggle);
