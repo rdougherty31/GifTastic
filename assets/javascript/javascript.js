@@ -63,6 +63,7 @@ $(document).ready(function() {
                 $(".gifImages").click(gifToggle);
             });
             headerBG();
+            $(".gifImages").click(gifToggle);
         });
     }
     $("#addArtist").click(function(event) {
