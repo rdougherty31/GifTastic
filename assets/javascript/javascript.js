@@ -13,7 +13,6 @@ $(document).ready(function () {
             btnDiv.attr("data-name", artists[i]);
             btnDiv.text(artists[i]);
             $("#btnsContainer").append(btnDiv);
-            console.log(artists);
         }
         if (artists.length > 9) {
             $("#gifContainer").css("margin-top", "26rem");
@@ -29,13 +28,11 @@ $(document).ready(function () {
             $(this).css("box-shadow", "none");
             $(this).css("-webkit-box-shadow", "none");
             var artToGet = $(this).attr("data-name");
-            console.log(artToGet);
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + artToGet + "&api_key=BfMWv9whatITDicyhgJzqwmg50jHEHD6&limit=10&rating=pg"; //get queryURL http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=YOUR_API_KEY&limit=10
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                console.log(response);
                 for (var i = 0; i < response.data.length; i++) {
                     var gifRating = response.data[i].rating;
                     var gifDiv = $("<div>");
@@ -52,11 +49,6 @@ $(document).ready(function () {
                     gifDiv.append(gifImgDiv);
                     gifDiv.append(gifP);
                     $("#gifContainer").prepend(gifDiv);
-                    console.log(gifImage);
-                    console.log(gifImgDiv.attr("src"));
-                    console.log(gifImgDiv.attr("data-still"));
-                    console.log(gifImgDiv.attr("data-move"));
-                    console.log(gifImgDiv.attr("data-state"));
                 }
                 $(".gifImages").click(gifToggle);
             });
@@ -70,7 +62,6 @@ $(document).ready(function () {
         if (artist !== "") {
             artists.push(artist);
             renderButtons();
-            console.log(artist);
             getGifs();
         }
         $("#artistInput").val("");
@@ -86,9 +77,5 @@ $(document).ready(function () {
             $(this).attr("src", still);
             $(this).attr("data-state", "still");
         }
-        console.log($(this).attr("src"));
-        console.log($(this).attr("data-still"));
-        console.log($(this).attr("data-move"));
-        console.log($(this).attr("data-state"));
     }
 });
